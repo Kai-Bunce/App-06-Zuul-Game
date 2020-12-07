@@ -2,8 +2,8 @@
 /**
  * The player class is the users character and can be used and played with
  *
- * @author (Kai Bunce)
- * @version Version 1
+ * Kai Bunce
+ * Version 1
  */
 public class Player
 {
