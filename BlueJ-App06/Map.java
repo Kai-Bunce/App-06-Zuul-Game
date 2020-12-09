@@ -7,6 +7,12 @@
  */
 public class Map 
 {
+    private Room outside;
+    private Room theate;
+    private Room pub;
+    private Room lab;
+    private Room office;
+    
     private Room startRoom;
     
     public void print()

@@ -19,8 +19,8 @@
 
 public class Game 
 {
-    private Map map;
-    private Parser parser;
+    private final Map map;
+    private final Parser parser;
     private Room currentRoom;
         
     /**
