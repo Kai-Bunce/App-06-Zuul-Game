@@ -19,6 +19,7 @@
 
 public class Game 
 {
+    private Map map;
     private Parser parser;
     private Room currentRoom;
         
@@ -27,6 +28,8 @@ public class Game
      */
     public Game() 
     {
+        map = new Map();
+        currentRoom = map.getStartRoom();
         createRooms();
         parser = new Parser();
     }
