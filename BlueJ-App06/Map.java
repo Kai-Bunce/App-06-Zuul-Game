@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class Map here.
  *
@@ -15,11 +14,6 @@ public class Map
     
     private Room startRoom;
     
-    public void print()
-    {
-        
-    }
-   
     public Map()
     {
         createRooms();

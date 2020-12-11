@@ -7,27 +7,38 @@
  */
 public class Player
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Player
-     */
-    public Player()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+  private final String name;
+  private int score;
+  private int count;
+  
+  public Player(String name)
+  {
+      this.name = name;
+      score = 0;
+  }
+  
+  public int getScore()
+  {
+      return score;
+  }
+  
+  public void resetScore()
+  {
+      score = 0;
+  }
+  
+  public void increaseScore (int amount)
+  {
+       if(amount > 0)
+          score += amount;
+  }   
+  
+  public void print()
+  {
+      System.out.println("Player : " + name);
+      System.out.println();
+  }
 }
+
+    
+
