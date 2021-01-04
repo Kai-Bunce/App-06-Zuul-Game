@@ -138,12 +138,28 @@ public class Game
             case QUIT:
                 wantToQuit = quit(command);
                 break;
+                
+            case PICKUP:
+                 pickUp();
+                 break;
+            
         }
         return wantToQuit;
     }
 
     // implementations of user commands:
 
+    private void pickUp()
+    {
+       if(currentRoom. getItem()!= Items.NO_ITEMS)
+       {
+           Items item = currentRoom.getItem();
+           player.pickUp(currentRoom. getItem());
+           System.out.println("You've just picked up " + item);
+       }
+        
+    }
+    
     /**
      * Print out some help information.
      * Here we print some stupid, cryptic message and a list of the 

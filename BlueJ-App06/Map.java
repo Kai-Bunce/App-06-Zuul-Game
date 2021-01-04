@@ -7,10 +7,14 @@
 public class Map 
 {
     private Room outside;
-    private Room theate;
+    private Room theater;
     private Room pub;
     private Room lab;
     private Room office;
+    private Room gym;
+    private Room carpark;
+    private Room reception;
+   
     
     private Room startRoom;
     
@@ -21,7 +25,6 @@ public class Map
     
     private void createRooms()
     {
-     Room outside, theater, pub, lab, office, gym, carpark, reception;
       
         // create the rooms
         outside = new Room("outside the main entrance of the university");
@@ -49,15 +52,32 @@ public class Map
 
         office.setExit("west", lab);
         office.setExit("south", reception);
+        office.setItem(Items.RECEPTION_KEY);
 
-        startRoom = outside;  // start game outside
+        startRoom = office; 
+        
+        setGymExits();
+        setCarparkExits();
+        setReception();
+        
     }
     
-    public void createGym()
+    public void setGymExits()
     {
-        gym = new Room("A gym");
         gym.setExit("east", theater);
-        theate,setExit("west",gym);
+        theater.setExit("west",gym);
+    }
+    
+    public void setCarparkExits()
+    {
+        carpark.setExit("south", outside);
+        outside.setExit("north", carpark);
+    }
+    
+    public void setReception()
+    {
+        reception.setExit("north", lab);
+        lab.setExit("south", reception);
     }
     
     
