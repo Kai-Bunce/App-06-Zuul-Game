@@ -45,7 +45,6 @@ public class Room
         return item;
     }
     
-    
     /**
      * Define an exit from this room.
      * @param direction The direction of the exit.

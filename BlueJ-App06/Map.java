@@ -46,7 +46,8 @@ public class Map
         theater.setExit("east", gym);
 
         pub.setExit("east", outside);
-
+        pub.setItem(Items.LITRE_WATER);
+        
         lab.setExit("north", outside);
         lab.setExit("east", office);
 
@@ -54,7 +55,7 @@ public class Map
         office.setExit("south", reception);
         office.setItem(Items.RECEPTION_KEY);
 
-        startRoom = office; 
+        startRoom = reception; 
         
         setGymExits();
         setCarparkExits();
@@ -78,8 +79,8 @@ public class Map
     {
         reception.setExit("north", lab);
         lab.setExit("south", reception);
+        reception.setItem(Items.CARKEYS);
     }
-    
     
     public Room getStartRoom()
     {

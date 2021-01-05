@@ -2,8 +2,8 @@
 /**
  * Enumeration class Items - write a description of the enum class here
  *
- * @author (your name here)
- * @version (version number or date here)
+ * Kai Bunce
+ * Version 1
  */
 public enum Items
 {
