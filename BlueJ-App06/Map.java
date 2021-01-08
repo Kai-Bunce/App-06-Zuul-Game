@@ -65,8 +65,8 @@ public class Map
     
     public void setGymExits()
     {
-        gym.setExit("east", theater);
-        theater.setExit("west",gym);
+        gym.setExit("west", theater);
+        theater.setExit("east",gym);
     }
     
     public void setCarparkExits()
