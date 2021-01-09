@@ -30,7 +30,7 @@ public class Map
         outside = new Room("outside the main entrance of the university");
         theater = new Room("in a lecture theater");
         pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
+        lab = new Room("in the computing lab");
         office = new Room("in the computing admin office");
         gym = new Room("in the gym");
         carpark = new Room("in the carpark");
@@ -55,7 +55,7 @@ public class Map
         office.setExit("south", reception);
         office.setItem(Items.RECEPTION_KEY);
 
-        startRoom = reception; 
+        startRoom = office; 
         
         setGymExits();
         setCarparkExits();

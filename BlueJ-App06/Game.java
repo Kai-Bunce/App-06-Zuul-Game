@@ -192,11 +192,23 @@ public class Game
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
 
-        if (nextRoom == null) {
+        if (nextRoom == null) 
+        {
             System.out.println("There is no door!");
         }
-        else {
-            currentRoom = nextRoom;
+        else // Can move into next room but reception room needs a key
+        {
+            boolean isReceptionRoom = nextRoom.getShortDescription().contains("reception");
+            
+            if ((player.hasItem(Items.RECEPTION_KEY) & isReceptionRoom) || !isReceptionRoom )
+            {
+                currentRoom = nextRoom; 
+            }
+            else 
+            {
+                System.out.println("You don't have the required key");
+            }
+
             System.out.println(currentRoom.getLongDescription());
         }
     }

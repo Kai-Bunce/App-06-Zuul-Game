@@ -8,53 +8,63 @@ import java.util.ArrayList;
  */
 public class Player
 {
-  private final String name;
-  private int score;
-  private int count;
-  private int panic;
-  private ArrayList < Items > items;
+    private final String name;
+    private int score;
+    private int count;
+    private int panic;
+    private ArrayList < Items > items;
+
+    public Player(String name)
+    {
+        this.name = name;
+        score = 0;
+        panic = 0;
+        count = 0;
+        items = new ArrayList <Items> ();
+    }
+
+    //public void display status();
+    
+    public void pickUp(Items item)
+    {
+        items.add(item);
+    }
+
+    public boolean hasItem(Items item)
+    {
+        for(Items playerItem:items)
+        {
+            if (playerItem == item) return true;
+        }
+        return false;
+    }
   
-  public Player(String name)
-  {
-      this.name = name;
-      score = 0;
-      panic = 0;
-      count = 0;
-      items = new ArrayList <Items> ();
-  }
-  
-  public void pickUp(Items item)
-  {
-      items.add(item);
-  }
-  
-  public int getPanic()
-  {
-      return panic;
-  }
-  
-  public int getScore()
-  {
-      return score;
-  }
-  
-  public void resetScore()
-  {
-      score = 0;
-  }
-  
-  public void increaseScore (int amount)
-  {
-       if(amount > 0)
-          score += amount;
-  }  
-  
-  public void print()
-  {
-      System.out.println("Player : " + name);
-      System.out.println();
-  }
+    public int getPanic()
+    {
+        return panic;
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
+
+    public void resetScore()
+    {
+        score = 0;
+    }
+
+    public void increaseScore (int amount)
+    {
+        if(amount > 0)
+            score += amount;
+    }  
+
+    public void print()
+    {
+        System.out.println("Player : " + name);
+        System.out.println();
+    }
 }
 
-    
 
