@@ -55,7 +55,7 @@ public class Map
         office.setExit("south", reception);
         office.setItem(Items.RECEPTION_KEY);
 
-        startRoom = office; 
+        startRoom = outside; 
         
         setGymExits();
         setCarparkExits();
