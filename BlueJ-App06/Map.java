@@ -14,6 +14,7 @@ public class Map
     private Room gym;
     private Room carpark;
     private Room reception;
+    private Room car;
    
     
     private Room startRoom;
@@ -35,6 +36,7 @@ public class Map
         gym = new Room("in the gym");
         carpark = new Room("in the carpark");
         reception = new Room("in the reception");
+        car = new Room("you are in the car congratulations you win");
         
         // initialise room exits
         outside.setExit("east", theater);
@@ -54,8 +56,9 @@ public class Map
         office.setExit("west", lab);
         office.setExit("south", reception);
         office.setItem(Items.RECEPTION_KEY);
+        
 
-        startRoom = outside; 
+        startRoom = carpark; 
         
         setGymExits();
         setCarparkExits();
@@ -72,6 +75,7 @@ public class Map
     public void setCarparkExits()
     {
         carpark.setExit("south", outside);
+        carpark.setExit("north", car);
         outside.setExit("north", carpark);
     }
     
@@ -80,6 +84,11 @@ public class Map
         reception.setExit("north", lab);
         lab.setExit("south", reception);
         reception.setItem(Items.CARKEYS);
+    }
+    
+    public void setCar()
+    {
+        carpark.setExit("north",car);
     }
     
     public Room getStartRoom()

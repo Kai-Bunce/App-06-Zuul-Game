@@ -18,7 +18,7 @@ public class Player
     {
         this.name = name;
         score = 0;
-        panic = 0;
+        panic = 50;
         count = 0;
         items = new ArrayList <Items> ();
     }
@@ -48,6 +48,11 @@ public class Player
     {
         return score;
     }
+    
+    public int getCount()
+    {
+        return count;
+    }
 
     public void resetScore()
     {
@@ -60,6 +65,12 @@ public class Player
             score += amount;
     }  
 
+        public void increasePanic (int amount)
+    {
+        if(amount > 0)
+            score -= amount;
+    }  
+    
     public void print()
     {
         System.out.println("Player : " + name);

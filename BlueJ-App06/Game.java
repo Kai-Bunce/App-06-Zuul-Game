@@ -147,6 +147,16 @@ public class Game
         return wantToQuit;
     }
 
+    
+    private void printPlayerStatus()
+    {
+        System.out.println ( "player status = " + player.getPanic());
+    }
+    
+    private void printPlayerScore()
+    {
+        System.out.println ( "player score = " + player.getScore());
+    }
     // implementations of user commands:
 
     private void pickUp()
@@ -210,7 +220,27 @@ public class Game
             }
 
             System.out.println(currentRoom.getLongDescription());
+            printPlayerStatus();
+            printPlayerScore();
         }
+        
+        {
+            boolean isCarRoom = nextRoom.getShortDescription().contains("reception");
+            
+            if ((player.hasItem(Items.CARKEYS) & isCarRoom) || !isCarRoom )
+            {
+                currentRoom = nextRoom; 
+            }
+            else 
+            {
+                System.out.println("You don't have the required key");
+            }
+
+            System.out.println(currentRoom.getLongDescription());
+            printPlayerStatus();
+            printPlayerScore();
+        }
+        
     }
 
     /** 
