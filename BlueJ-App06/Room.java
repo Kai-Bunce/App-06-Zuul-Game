@@ -21,6 +21,7 @@ public class Room
     private String description;
     private HashMap<String, Room> exits;  
     private Items item;
+    private Items requiredItem;
 
     /**
      * Create a room described "description". Initially, it has
@@ -33,12 +34,23 @@ public class Room
         this.description = description;
         exits = new HashMap<>();
         item= Items.NO_ITEMS;
+        requiredItem = Items.NO_ITEMS;
     }
 
     public void setItem(Items item)
     {
         this.item = item;
     }
+    
+    public void setRequiredItem(Items requiredItem)
+    {
+        this.requiredItem = requiredItem;
+    }
+    
+    public Items getRequiredItem()
+    {
+        return requiredItem;
+    }    
     
     public Items getItem()
     {

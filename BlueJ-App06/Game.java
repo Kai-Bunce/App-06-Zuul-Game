@@ -20,11 +20,11 @@
 public class Game 
 {
     private final Map map;
-    
+
     private final Parser parser;
-    
+
     private Room currentRoom;
-        
+
     private Player player;
     /**
      * Create the game and initialise its internal map.
@@ -34,47 +34,10 @@ public class Game
         map = new Map();
         currentRoom = map.getStartRoom();
         player = new Player("Kai");
-       
+
         parser = new Parser();
     }
 
-    /**
-     * Create all the rooms and link their exits together.
-     */
-    private void createRooms()
-    {
-        Room outside, theater, pub, lab, office, gym, carpark, reception;
-      
-        // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
-        gym = new Room("in the gym");
-        carpark = new Room("in the carpark");
-        reception = new Room("in the reception");
-        
-        // initialise room exits
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-        outside.setExit("north", carpark);
-
-        theater.setExit("west", outside);
-        theater.setExit("east", gym);
-        
-
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-
-        office.setExit("west", lab);
-        office.setExit("south", reception);
-
-        currentRoom = outside;  // start game outside
-    }
 
     /**
      *  Main play routine.  Loops until end of play.
@@ -85,15 +48,15 @@ public class Game
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-                
+
         boolean finished = false;
-        
+
         while (! finished) 
         {
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        
+
         System.out.println("Thank you for playing.  Good bye.");
     }
 
@@ -124,35 +87,34 @@ public class Game
         switch (commandWord) 
         {
             case UNKNOWN:
-                System.out.println("I don't know what you mean...");
-                break;
+            System.out.println("I don't know what you mean...");
+            break;
 
             case HELP:
-                printHelp();
-                break;
+            printHelp();
+            break;
 
             case GO:
-                goRoom(command);
-                break;
+            goRoom(command);
+            break;
 
             case QUIT:
-                wantToQuit = quit(command);
-                break;
-                
+            wantToQuit = quit(command);
+            break;
+
             case PICKUP:
-                 pickUp();
-                 break;
-            
+            pickUp();
+            break;
+
         }
         return wantToQuit;
     }
 
-    
     private void printPlayerStatus()
     {
         System.out.println ( "player status = " + player.getPanic());
     }
-    
+
     private void printPlayerScore()
     {
         System.out.println ( "player score = " + player.getScore());
@@ -161,15 +123,15 @@ public class Game
 
     private void pickUp()
     {
-       if(currentRoom. getItem()!= Items.NO_ITEMS)
-       {
-           Items item = currentRoom.getItem();
-           player.pickUp(currentRoom. getItem());
-           System.out.println("You've just picked up " + item);
-       }
-        
+        if(currentRoom. getItem()!= Items.NO_ITEMS)
+        {
+            Items item = currentRoom.getItem();
+            player.pickUp(currentRoom. getItem());
+            System.out.println("You've just picked up " + item);
+        }
+
     }
-    
+
     /**
      * Print out some help information.
      * Here we print some stupid, cryptic message and a list of the 
@@ -205,42 +167,65 @@ public class Game
         if (nextRoom == null) 
         {
             System.out.println("There is no door!");
+            return;
         }
-        else // Can move into next room but reception room needs a key
-        {
-            boolean isReceptionRoom = nextRoom.getShortDescription().contains("reception");
-            
-            if ((player.hasItem(Items.RECEPTION_KEY) & isReceptionRoom) || !isReceptionRoom )
-            {
-                currentRoom = nextRoom; 
-            }
-            else 
-            {
-                System.out.println("You don't have the required key");
-            }
 
-            System.out.println(currentRoom.getLongDescription());
-            printPlayerStatus();
-            printPlayerScore();
+        Items requiredItem = nextRoom.getRequiredItem();
+        if( requiredItem != Items.NO_ITEMS)
+        {
+            if(player.hasItem(requiredItem))
+            {
+                enterNextRoom(nextRoom);
+            }
+            else
+            {
+                System.out.println("You cannot enter as you do not have " + requiredItem);
+            }
+        }
+        else
+        {
+            enterNextRoom(nextRoom);
+            
         }
         
-        {
-            boolean isCarRoom = nextRoom.getShortDescription().contains("reception");
-            
-            if ((player.hasItem(Items.CARKEYS) & isCarRoom) || !isCarRoom )
-            {
-                currentRoom = nextRoom; 
-            }
-            else 
-            {
-                System.out.println("You don't have the required key");
-            }
-
-            System.out.println(currentRoom.getLongDescription());
-            printPlayerStatus();
-            printPlayerScore();
-        }
+    }
+    
+    private void enterNextRoom(Room nextRoom)
+    {
+        currentRoom = nextRoom;
         
+        System.out.println(currentRoom.getLongDescription());
+        printPlayerStatus();
+        printPlayerScore();
+    }
+    
+    private void enterCarRoom(Room nextRoom)
+    {
+        boolean isCarRoom = nextRoom.getShortDescription().contains("car");
+
+        if ((player.hasItem(Items.CARKEYS) & isCarRoom) || !isCarRoom )
+        {
+            currentRoom = nextRoom; 
+        }
+        else 
+        {
+            System.out.println("You don't have the required key");
+        }
+    }
+
+    private void enterReceptionRoom(Room nextRoom)
+    {
+        boolean isReceptionRoom = nextRoom.getShortDescription().contains("reception");
+
+        if ((player.hasItem(Items.RECEPTION_KEY) & isReceptionRoom) )
+        {
+            currentRoom = nextRoom; 
+        }
+        else 
+        {
+            System.out.println("You don't have the required key");
+        }
+
     }
 
     /** 

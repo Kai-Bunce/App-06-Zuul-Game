@@ -63,6 +63,7 @@ public class Map
         setGymExits();
         setCarparkExits();
         setReception();
+        setCar();
         
     }
     
@@ -84,11 +85,13 @@ public class Map
         reception.setExit("north", lab);
         lab.setExit("south", reception);
         reception.setItem(Items.CARKEYS);
+        reception.setRequiredItem(Items.RECEPTION_KEY);
     }
     
     public void setCar()
     {
         carpark.setExit("north",car);
+        car.setRequiredItem(Items.CARKEYS);
     }
     
     public Room getStartRoom()
