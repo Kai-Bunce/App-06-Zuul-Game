@@ -197,6 +197,7 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
         printPlayerStatus();
         printPlayerScore();
+        //Player.increasePanic(int);
     }
     
     private void enterCarRoom(Room nextRoom)
@@ -226,8 +227,8 @@ public class Game
             System.out.println("You don't have the required key");
         }
 
-    }
-
+    }   
+    
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
