@@ -34,10 +34,8 @@ public class Game
         map = new Map();
         currentRoom = map.getStartRoom();
         player = new Player("Kai");
-
         parser = new Parser();
     }
-
 
     /**
      *  Main play routine.  Loops until end of play.
@@ -66,8 +64,8 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Welcome to Find Your Keys!");
+        System.out.println("Find Your Keys is a new, incredibly boring adventure game where you find your car keys.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -197,7 +195,8 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
         printPlayerStatus();
         printPlayerScore();
-        //Player.increasePanic(int);
+        player.increasePanic(5);
+        player.increaseScore(50);
     }
     
     private void enterCarRoom(Room nextRoom)

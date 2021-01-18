@@ -28,14 +28,14 @@ public class Map
     {
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
+        outside = new Room("outside the main entrance of the university no one is in sight you can go to the theater, lab, pub or the carpark");
+        theater = new Room("in a lecture theater luckily no lecture is going on you don't see anything of importance near by");
+        pub = new Room("in the campus pub theres a litre of water at the bar which may reduce your stress if you drink it pickup?. ");
         lab = new Room("in the computing lab");
-        office = new Room("in the computing admin office");
-        gym = new Room("in the gym");
-        carpark = new Room("in the carpark");
-        reception = new Room("in the reception");
+        office = new Room("in the computing admin office you see a key labelled reception it may be of use to you pickup?");
+        gym = new Room("in the gym why are you here? You never go here");
+        carpark = new Room("in the carpark you see your car in a sea of cars");
+        reception = new Room("in the reception the recptionist has gone home for the day however you see a key which looks like your car keys pickup?");
         car = new Room("you are in the car congratulations you win");
         
         // initialise room exits
@@ -58,7 +58,7 @@ public class Map
         office.setItem(Items.RECEPTION_KEY);
         
 
-        startRoom = carpark; 
+        startRoom = outside; 
         
         setGymExits();
         setCarparkExits();

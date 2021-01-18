@@ -18,7 +18,7 @@ public class Player
     {
         this.name = name;
         score = 0;
-        panic = 5;
+        panic = 0;
         count = 0;
         items = new ArrayList <Items> ();
     }
@@ -63,9 +63,9 @@ public class Player
             score += amount;
     } 
     
-     public void increasePanic (int amount)
+    public void increasePanic (int amount)
     {
-        if(amount > 6)
+        if(amount > 0)
             panic += amount;
     }  
     
